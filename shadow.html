@@ -6,21 +6,28 @@
 <meta charset="UTF-8">
 <title>Corbyte Shadow</title>
 
+
 <style>
 
 body{
+
 margin:0;
 background:#050505;
 color:white;
 font-family:Arial;
 text-align:center;
+
 }
 
+
+/* Panier */
 
 .panier{
 
 position:fixed;
+
 top:20px;
+
 right:30px;
 
 background:#ff003c;
@@ -29,24 +36,30 @@ padding:12px 20px;
 
 border-radius:15px;
 
-z-index:100;
+z-index:1000;
 
 }
+
 
 
 .panier a{
 
 color:white;
+
 text-decoration:none;
+
 font-size:22px;
 
 }
 
 
 
+/* Carte PC */
+
 .card{
 
 width:700px;
+
 max-width:90%;
 
 margin:70px auto;
@@ -74,7 +87,9 @@ width:300px;
 .prix{
 
 color:#ff003c;
+
 font-size:30px;
+
 font-weight:bold;
 
 }
@@ -99,12 +114,17 @@ font-size:17px;
 
 }
 
+
+
 </style>
+
 
 </head>
 
 
+
 <body>
+
 
 
 <div class="panier">
@@ -119,51 +139,69 @@ font-size:17px;
 
 
 
+
 <div class="card">
 
 
 <h1>
+
 CORBYTE SHADOW
+
 </h1>
 
 
-<img src="shadow-pc.png">
+
+<img src="shadow-pc.png" alt="Shadow PC">
+
+
 
 
 <h2>
+
 PC Gaming RX 9060 XT
+
 </h2>
+
 
 
 <div class="prix">
+
 1295 €
+
 </div>
 
 
+
+
 <h2>
+
 Configuration complète
+
 </h2>
+
+
 
 
 <p>
 
-⚙️ AMD Ryzen 7 5700X<br>
+⚙️ AMD Ryzen 7 5700X<br><br>
 
-🎮 Sapphire Pulse RX 9060 XT 16 Go<br>
+🎮 Sapphire Pulse RX 9060 XT 16 Go<br><br>
 
-🧠 Patriot Viper Steel DDR4 16 Go (2x8)<br>
+🧠 Patriot Viper Steel DDR4 16 Go (2x8)<br><br>
 
-💾 Silicon Power NVMe 1 To<br>
+💾 Silicon Power NVMe 1 To<br><br>
 
-🔧 MSI B550 Gaming WiFi<br>
+🔧 MSI B550 Gaming WiFi<br><br>
 
-❄️ Thermalright Assassin X120 ARGB<br>
+❄️ Thermalright Assassin X120 ARGB<br><br>
 
-🔌 MSI MAG A650BN 650W<br>
+🔌 MSI MAG A650BN 650W<br><br>
 
 🖥️ MSI MAG Forge 120A Airflow
 
 </p>
+
 
 
 
@@ -179,7 +217,10 @@ Ajouter au panier
 
 
 
+
+
 <script>
+
 
 
 function afficherCompteur(){
@@ -187,7 +228,9 @@ function afficherCompteur(){
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
+
 let nombre = 0;
+
 
 
 panier.forEach(pc=>{
@@ -197,7 +240,8 @@ nombre += pc.quantite;
 });
 
 
-document.getElementById("compteur").innerHTML=nombre;
+
+document.getElementById("compteur").innerHTML = nombre;
 
 
 }
@@ -205,20 +249,25 @@ document.getElementById("compteur").innerHTML=nombre;
 
 
 
+
 function ajouterPanier(){
+
 
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
 
-let pcExiste = panier.find(pc=>pc.nom==="Corbyte Shadow");
+let existe = panier.find(pc => pc.nom === "Corbyte Shadow");
 
 
 
-if(pcExiste){
 
-pcExiste.quantite++;
+if(existe){
+
+
+existe.quantite++;
+
 
 }
 
@@ -246,6 +295,7 @@ localStorage.setItem("panier",JSON.stringify(panier));
 
 
 
+
 let bouton=document.getElementById("ajouter");
 
 
@@ -255,13 +305,17 @@ bouton.innerHTML="Ajouté ✓";
 
 setTimeout(()=>{
 
+
 bouton.innerHTML="Ajouter au panier";
+
 
 },1000);
 
 
 
+
 afficherCompteur();
+
 
 
 }
@@ -269,12 +323,16 @@ afficherCompteur();
 
 
 
+
 afficherCompteur();
+
 
 
 </script>
 
 
+
 </body>
+
 
 </html>
