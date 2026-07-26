@@ -24,6 +24,7 @@ top:20px;
 right:30px;
 
 background:#ff003c;
+
 padding:12px 20px;
 
 border-radius:15px;
@@ -83,6 +84,7 @@ font-weight:bold;
 button{
 
 background:#ff003c;
+
 color:white;
 
 border:none;
@@ -128,18 +130,14 @@ CORBYTE SHADOW
 <img src="shadow-pc.png">
 
 
-
 <h2>
 PC Gaming RX 9060 XT
 </h2>
 
 
 <div class="prix">
-
 1295 €
-
 </div>
-
 
 
 <h2>
@@ -147,14 +145,13 @@ Configuration complète
 </h2>
 
 
-
 <p>
 
-⚙️ Ryzen 7 5700X<br>
+⚙️ AMD Ryzen 7 5700X<br>
 
-🎮 Sapphire RX 9060 XT 16 Go<br>
+🎮 Sapphire Pulse RX 9060 XT 16 Go<br>
 
-🧠 Patriot Viper Steel DDR4 16 Go<br>
+🧠 Patriot Viper Steel DDR4 16 Go (2x8)<br>
 
 💾 Silicon Power NVMe 1 To<br>
 
@@ -170,7 +167,7 @@ Configuration complète
 
 
 
-<button onclick="ajouterPanier()">
+<button id="ajouter" onclick="ajouterPanier()">
 
 Ajouter au panier
 
@@ -187,21 +184,24 @@ Ajouter au panier
 
 function afficherCompteur(){
 
+
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-let total = 0;
+let nombre = 0;
 
 
-panier.forEach(pc => {
+panier.forEach(pc=>{
 
-total += pc.quantite;
+nombre += pc.quantite;
 
 });
 
 
-document.getElementById("compteur").innerHTML = total;
+document.getElementById("compteur").innerHTML=nombre;
+
 
 }
+
 
 
 
@@ -212,15 +212,13 @@ let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
 
-let existant = panier.find(pc => pc.nom === "Corbyte Shadow");
+let pcExiste = panier.find(pc=>pc.nom==="Corbyte Shadow");
 
 
 
-if(existant){
+if(pcExiste){
 
-
-existant.quantite++;
-
+pcExiste.quantite++;
 
 }
 
@@ -248,13 +246,26 @@ localStorage.setItem("panier",JSON.stringify(panier));
 
 
 
+let bouton=document.getElementById("ajouter");
+
+
+bouton.innerHTML="Ajouté ✓";
+
+
+
+setTimeout(()=>{
+
+bouton.innerHTML="Ajouter au panier";
+
+},1000);
+
+
+
 afficherCompteur();
 
 
-alert("PC ajouté au panier");
-
-
 }
+
 
 
 
@@ -262,7 +273,6 @@ afficherCompteur();
 
 
 </script>
-
 
 
 </body>
