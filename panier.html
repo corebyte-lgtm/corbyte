@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <title>Panier Corbyte</title>
 
 
@@ -12,17 +11,19 @@
 
 body {
 
-margin:0;
 background:#050505;
+
 color:white;
+
 font-family:Arial;
+
+text-align:center;
 
 }
 
 
 h1 {
 
-text-align:center;
 color:#ff003c;
 
 }
@@ -30,49 +31,48 @@ color:#ff003c;
 
 .box {
 
-width:600px;
+width:500px;
+
 margin:50px auto;
+
 background:#111;
+
 border:2px solid #ff003c;
+
 border-radius:20px;
+
 padding:25px;
 
 }
 
 
 
-.produit {
+img {
 
-display:flex;
-align-items:center;
-gap:20px;
-border-bottom:1px solid #333;
-padding:15px;
+width:120px;
 
 }
 
-
-.produit img {
-
-width:100px;
-
-}
 
 
 button {
 
 background:#ff003c;
+
 color:white;
+
 border:none;
-padding:12px 20px;
+
+padding:12px 25px;
+
 border-radius:10px;
+
 cursor:pointer;
 
 }
 
 
 </style>
-
 
 </head>
 
@@ -81,126 +81,72 @@ cursor:pointer;
 
 
 <h1>
-Votre panier
+Mon panier
 </h1>
 
 
-<div class="box" id="contenu">
+
+<div class="box" id="panier">
+
 
 </div>
+
 
 
 
 <script>
 
 
-function afficherPanier(){
+let produits = JSON.parse(localStorage.getItem("panier")) || [];
 
 
-let panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-
-let contenu = document.getElementById("contenu");
+let zone = document.getElementById("panier");
 
 
 
-if(panier.length === 0){
+if(produits.length === 0){
 
-contenu.innerHTML="Votre panier est vide";
 
-return;
+zone.innerHTML="Panier vide";
+
 
 }
 
+else{
 
 
-let html="";
-
-let total=0;
+let pc = produits[0];
 
 
-
-panier.forEach((pc,index)=>{
-
-
-total += pc.prix;
-
-
-html += `
-
-<div class="produit">
+zone.innerHTML = `
 
 <img src="${pc.image}">
-
-<div>
 
 <h2>${pc.nom}</h2>
 
 <p>${pc.prix} €</p>
 
+<button onclick="supprimer()">
 
-<button onclick="supprimer(${index})">
-
-🗑️
-
-</button>
-
-
-</div>
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-html += `
-
-<h2>Total : ${total} €</h2>
-
-
-<button>
-
-Commander
+🗑️ Supprimer
 
 </button>
 
 `;
 
-
-
-contenu.innerHTML=html;
-
-
 }
 
 
 
-function supprimer(index){
+function supprimer(){
 
 
-let panier = JSON.parse(localStorage.getItem("panier")) || [];
+localStorage.removeItem("panier");
 
-
-panier.splice(index,1);
-
-
-localStorage.setItem("panier",JSON.stringify(panier));
-
-
-afficherPanier();
+location.reload();
 
 
 }
-
-
-
-afficherPanier();
 
 
 </script>
