@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>Panier Corbyte</title>
 
+
 <style>
 
 body{
 
+margin:0;
 background:#050505;
 color:white;
 font-family:Arial;
@@ -27,7 +29,7 @@ margin-top:40px;
 
 
 
-.box{
+.panier-box{
 
 width:700px;
 max-width:90%;
@@ -46,7 +48,7 @@ padding:30px;
 
 
 
-img{
+.produit img{
 
 width:150px;
 
@@ -92,6 +94,8 @@ height:45px;
 
 font-size:25px;
 
+padding:0;
+
 }
 
 
@@ -116,20 +120,14 @@ font-size:17px;
 
 
 
-.supprimer{
-
-margin-top:20px;
-
-}
-
-
-
 </style>
+
 
 </head>
 
 
 <body>
+
 
 
 <h1>
@@ -138,19 +136,22 @@ Votre panier 🛒
 
 
 
-<div class="box" id="contenu">
+<div class="panier-box" id="contenu">
 
 </div>
+
 
 
 
 <script>
 
 
+
 function afficherPanier(){
 
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
 
 let contenu = document.getElementById("contenu");
 
@@ -175,6 +176,7 @@ let html = "";
 
 
 
+
 panier.forEach((pc,index)=>{
 
 
@@ -188,16 +190,20 @@ total += sousTotal;
 html += `
 
 
+<div class="produit">
+
+
 <img src="${pc.image}">
 
 
-<h2>
-${pc.nom}
-</h2>
+<h2>${pc.nom}</h2>
+
 
 
 <p>
+
 Prix unitaire : ${pc.prix} €
+
 </p>
 
 
@@ -206,21 +212,30 @@ Prix unitaire : ${pc.prix} €
 
 
 <button onclick="moins(${index})">
+
 -
+
 </button>
 
 
-<b>
+
+<h2>
+
 ${pc.quantite}
-</b>
+
+</h2>
+
 
 
 <button onclick="plus(${index})">
+
 +
+
 </button>
 
 
 </div>
+
 
 
 
@@ -232,11 +247,19 @@ Sous-total : ${sousTotal} €
 
 
 
-<button class="supprimer" onclick="supprimer(${index})">
+<br>
+
+
+
+<button onclick="supprimer(${index})">
 
 🗑️ Supprimer
 
 </button>
+
+
+
+</div>
 
 
 <hr>
@@ -250,6 +273,7 @@ Sous-total : ${sousTotal} €
 
 
 
+
 html += `
 
 
@@ -258,6 +282,7 @@ html += `
 Total : ${total} €
 
 </h2>
+
 
 
 <a href="commande.html">
@@ -278,7 +303,9 @@ Commander
 contenu.innerHTML = html;
 
 
+
 }
+
 
 
 
@@ -299,6 +326,7 @@ afficherPanier();
 
 
 }
+
 
 
 
@@ -338,6 +366,7 @@ afficherPanier();
 
 
 
+
 function supprimer(index){
 
 
@@ -345,6 +374,7 @@ let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
 panier.splice(index,1);
+
 
 
 localStorage.setItem("panier",JSON.stringify(panier));
@@ -357,13 +387,15 @@ afficherPanier();
 
 
 
+
 afficherPanier();
+
 
 
 </script>
 
 
+
 </body>
 
 </html>
-
