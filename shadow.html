@@ -17,71 +17,126 @@ body {
     font-family:Arial,sans-serif;
 }
 
+
 .panier {
+
     position:fixed;
     top:20px;
     right:30px;
+
     background:#ff003c;
+
     padding:12px 18px;
+
     border-radius:15px;
+
 }
 
+
 .panier a {
+
     color:white;
     text-decoration:none;
     font-size:22px;
+
 }
+
 
 
 .container {
+
     text-align:center;
+
     padding:40px;
+
 }
+
 
 
 h1 {
+
     color:#ff003c;
+
     font-size:45px;
+
 }
+
 
 
 .card {
+
     max-width:750px;
+
     margin:auto;
+
     background:#111;
+
     border:2px solid #ff003c;
+
     border-radius:20px;
+
     padding:30px;
+
 }
 
 
-img {
+
+.card img {
+
     width:300px;
+
 }
+
 
 
 .price {
+
     color:#ff003c;
+
     font-size:30px;
+
     font-weight:bold;
+
 }
 
 
-li {
+
+ul {
+
     text-align:left;
-    margin:10px;
+
+    line-height:1.8;
+
 }
+
 
 
 button {
+
     background:#ff003c;
+
     color:white;
+
     border:none;
+
     padding:15px 30px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     font-size:17px;
+
 }
+
+
+
+button:hover {
+
+    background:#c90030;
+
+}
+
 
 </style>
 
@@ -91,13 +146,17 @@ button {
 <body>
 
 
+
 <div class="panier">
 
 <a href="panier.html">
+
 🛒 <span id="compteur">0</span>
+
 </a>
 
 </div>
+
 
 
 
@@ -109,10 +168,12 @@ CORBYTE SHADOW
 </h1>
 
 
+
 <div class="card">
 
 
-<img src="shadow-pc.png">
+<img src="shadow-pc.png" alt="Corbyte Shadow">
+
 
 
 <h2>
@@ -120,40 +181,48 @@ PC Gaming RX 9060 XT
 </h2>
 
 
+
 <div class="price">
 1295 €
 </div>
 
 
+
 <h2>
-Configuration
+Configuration complète
 </h2>
+
 
 
 <ul>
 
-<li>AMD Ryzen 7 5700X</li>
+<li>⚙️ Processeur : AMD Ryzen 7 5700X</li>
 
-<li>Sapphire Pulse RX 9060 XT 16 Go</li>
+<li>🎮 Carte graphique : Sapphire Pulse RX 9060 XT 16 Go</li>
 
-<li>Patriot Viper Steel DDR4 16 Go (2x8 Go)</li>
+<li>🧠 RAM : Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16</li>
 
-<li>Silicon Power NVMe 1 To</li>
+<li>💾 Stockage : Silicon Power NVMe 1 To</li>
 
-<li>MSI B550 Gaming WiFi</li>
+<li>🔧 Carte mère : MSI B550 Gaming WiFi ATX PCIe 4.0</li>
 
-<li>Thermalright Assassin X120 Digital ARGB</li>
+<li>❄️ Refroidissement : Thermalright Assassin X120 Digital ARGB</li>
 
-<li>MSI MAG A650BN 650W</li>
+<li>🔌 Alimentation : MSI MAG A650BN 650W</li>
 
-<li>MSI MAG Forge 120A Airflow</li>
+<li>🖥️ Boîtier : MSI MAG Forge 120A Airflow</li>
 
 </ul>
 
 
-<button onclick="ajouterPanier()">
+
+
+<button id="btnPanier" onclick="ajouterPanier()">
+
 Ajouter au panier
+
 </button>
+
 
 
 </div>
@@ -168,11 +237,15 @@ Ajouter au panier
 
 function mettreAJourCompteur(){
 
+
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
 
 document.getElementById("compteur").innerHTML = panier.length;
 
+
 }
+
 
 
 
@@ -180,6 +253,7 @@ function ajouterPanier(){
 
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
 
 
 let pc = {
@@ -193,16 +267,25 @@ image:"shadow-pc.png"
 };
 
 
+
 panier.push(pc);
+
 
 
 localStorage.setItem("panier", JSON.stringify(panier));
 
 
+
+document.getElementById("btnPanier").innerHTML="Ajouté ✓";
+
+
+
 mettreAJourCompteur();
 
 
+
 }
+
 
 
 
@@ -210,6 +293,7 @@ mettreAJourCompteur();
 
 
 </script>
+
 
 
 </body>
