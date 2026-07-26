@@ -6,73 +6,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Corbyte Shadow</title>
+<title>Corbyte - Nos PC</title>
 
 <style>
 
 body {
-    margin: 0;
-    background: #050505;
-    color: white;
-    font-family: Arial, sans-serif;
+    margin:0;
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+
+h1 {
+    text-align:center;
+    color:#ff003c;
+    font-size:50px;
+    margin-top:40px;
 }
 
 
 .container {
 
-    text-align: center;
-    padding: 50px;
-
-}
-
-
-h1 {
-
-    color: #ff003c;
-    font-size: 55px;
-
-}
-
-
-.price {
-
-    color: #ff003c;
-    font-size: 35px;
-    font-weight: bold;
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
 
 }
 
 
 .card {
 
-    background: #111;
-    max-width: 600px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 20px;
-    border: 2px solid #ff003c;
+    width:320px;
+    background:#111;
+    border:2px solid #ff003c;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
 
 }
 
 
-ul {
+/* Petit carré image à gauche */
 
-    text-align: left;
-    font-size: 20px;
-    line-height: 1.8;
+.image-box {
+
+    width:150px;
+    height:150px;
+    border:2px solid #ff003c;
+    border-radius:15px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
 }
+
+
+.image-box img {
+
+    max-width:90%;
+    max-height:90%;
+
+}
+
+
+
+h2 {
+    font-size:28px;
+}
+
+
+.price {
+
+    color:#ff003c;
+    font-size:25px;
+    font-weight:bold;
+
+}
+
 
 
 button {
 
-    background: #ff003c;
-    color: white;
-    border: none;
-    padding: 18px 40px;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
+    background:#ff003c;
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    padding:15px 30px;
+
+    cursor:pointer;
+
+    font-size:16px;
 
 }
 
@@ -85,22 +114,33 @@ button {
 <body>
 
 
-<div class="container">
-
-
 <h1>
-CORBYTE SHADOW
+Nos PC Gaming
 </h1>
+
+
+
+<div class="container">
 
 
 <div class="card">
 
 
-<img src="shadow-pc.png" alt="Corbyte Shadow" width="400">
+<div class="image-box">
+
+<img src="shadow-pc.png" alt="Corbyte Shadow">
+
+</div>
+
 
 <h2>
-PC Gaming RX 9060 XT
+Corbyte Shadow
 </h2>
+
+
+<p>
+RX 9060 XT 16 Go
+</p>
 
 
 <div class="price">
@@ -108,35 +148,17 @@ PC Gaming RX 9060 XT
 </div>
 
 
-<h2>
-Configuration
-</h2>
+<br>
 
 
-<ul>
-
-<li>Processeur : AMD Ryzen 7 5700X</li>
-
-<li>Carte graphique : Sapphire Pulse AMD Radeon RX 9060 XT 16 Go</li>
-
-<li>Mémoire RAM : Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16</li>
-
-<li>Stockage : SSD NVMe Silicon Power 1 To</li>
-
-<li>Carte mère : MSI B550 Gaming WiFi ATX PCIe 4.0</li>
-
-<li>Refroidissement : Thermalright Assassin X120 Digital ARGB</li>
-
-<li>Alimentation : MSI MAG A650BN 650W</li>
-
-<li>Boîtier : MSI MAG Forge 120A Airflow</li>
-
-</ul>
-
+<a href="shadow.html">
 
 <button>
-Ajouter au panier
+Voir les détails
 </button>
+
+</a>
+
 
 
 </div>
@@ -148,3 +170,4 @@ Ajouter au panier
 </body>
 
 </html>
+
