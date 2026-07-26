@@ -17,16 +17,32 @@ body {
 }
 
 
-h1 {
-    color:#ff003c;
-    margin-top:40px;
+.panier {
+
+    position:fixed;
+    top:20px;
+    right:30px;
+
+    background:#ff003c;
+    padding:12px 20px;
+    border-radius:12px;
+
+}
+
+
+.panier a {
+
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+
 }
 
 
 .card {
 
     width:600px;
-    margin:50px auto;
+    margin:60px auto;
 
     background:#111;
 
@@ -46,7 +62,6 @@ img {
 }
 
 
-
 .prix {
 
     color:#ff003c;
@@ -56,7 +71,6 @@ img {
     font-weight:bold;
 
 }
-
 
 
 button {
@@ -71,31 +85,42 @@ button {
 
     border-radius:10px;
 
-    font-size:18px;
-
     cursor:pointer;
+
+    font-size:18px;
 
 }
 
 
-#message {
+#btn {
 
     margin-top:20px;
-
-    color:#00ff66;
-
-    font-size:20px;
 
 }
 
 
 </style>
 
-
 </head>
 
 
 <body>
+
+
+<div class="panier">
+
+<a href="panier.html">
+
+🛒 <span id="compteur">0</span>
+
+</a>
+
+</div>
+
+
+
+
+<div class="card">
 
 
 <h1>
@@ -104,10 +129,8 @@ CORBYTE SHADOW
 
 
 
-<div class="card">
-
-
 <img src="shadow-pc.png">
+
 
 
 <h2>
@@ -115,15 +138,11 @@ PC Gaming RX 9060 XT
 </h2>
 
 
+
 <div class="prix">
 1295 €
 </div>
 
-
-
-<h2>
-Configuration
-</h2>
 
 
 <p>
@@ -141,15 +160,11 @@ MSI MAG Forge 120A Airflow
 
 
 
-<button onclick="testBouton()">
+<button id="btn" onclick="ajouterPanier()">
 
 Ajouter au panier
 
 </button>
-
-
-
-<div id="message"></div>
 
 
 
@@ -160,15 +175,55 @@ Ajouter au panier
 
 <script>
 
-function testBouton(){
 
-document.getElementById("message").innerHTML =
-"✅ Le bouton fonctionne !";
+function afficherCompteur(){
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+document.getElementById("compteur").innerHTML = panier.length;
 
 }
 
-</script>
 
+
+function ajouterPanier(){
+
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+let pc = {
+
+nom:"Corbyte Shadow",
+
+prix:1295,
+
+image:"shadow-pc.png"
+
+};
+
+
+panier.push(pc);
+
+
+localStorage.setItem("panier", JSON.stringify(panier));
+
+
+document.getElementById("btn").innerHTML="Ajouté ✓";
+
+
+afficherCompteur();
+
+
+}
+
+
+
+afficherCompteur();
+
+
+
+</script>
 
 
 </body>
