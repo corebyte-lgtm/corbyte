@@ -12,6 +12,7 @@
 
 body {
 
+margin:0;
 background:#050505;
 color:white;
 font-family:Arial;
@@ -27,42 +28,45 @@ color:#ff003c;
 }
 
 
+.box {
 
-.panier-box {
-
-width:500px;
-
+width:600px;
 margin:50px auto;
-
 background:#111;
-
 border:2px solid #ff003c;
-
 border-radius:20px;
-
 padding:25px;
-
-text-align:center;
 
 }
 
 
 
+.produit {
+
+display:flex;
+align-items:center;
+gap:20px;
+border-bottom:1px solid #333;
+padding:15px;
+
+}
+
+
+.produit img {
+
+width:100px;
+
+}
+
+
 button {
 
 background:#ff003c;
-
 color:white;
-
 border:none;
-
-padding:12px 25px;
-
+padding:12px 20px;
 border-radius:10px;
-
 cursor:pointer;
-
-font-size:16px;
 
 }
 
@@ -81,9 +85,7 @@ Votre panier
 </h1>
 
 
-
-<div class="panier-box" id="panier">
-
+<div class="box" id="contenu">
 
 </div>
 
@@ -92,32 +94,74 @@ Votre panier
 <script>
 
 
-let produit = localStorage.getItem("produit");
-
-let prix = localStorage.getItem("prix");
+function afficherPanier(){
 
 
-
-if(produit){
-
-
-document.getElementById("panier").innerHTML = `
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
-<h2>${produit}</h2>
+let contenu = document.getElementById("contenu");
 
 
-<p>${prix} €</p>
+
+if(panier.length === 0){
+
+contenu.innerHTML="Votre panier est vide";
+
+return;
+
+}
 
 
-<button onclick="supprimer()">
 
-🗑️ Supprimer
+let html="";
+
+let total=0;
+
+
+
+panier.forEach((pc,index)=>{
+
+
+total += pc.prix;
+
+
+html += `
+
+<div class="produit">
+
+<img src="${pc.image}">
+
+<div>
+
+<h2>${pc.nom}</h2>
+
+<p>${pc.prix} €</p>
+
+
+<button onclick="supprimer(${index})">
+
+🗑️
 
 </button>
 
 
-<br><br>
+</div>
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+html += `
+
+<h2>Total : ${total} €</h2>
 
 
 <button>
@@ -126,36 +170,42 @@ Commander
 
 </button>
 
-
 `;
 
 
-}
 
-else{
-
-
-document.getElementById("panier").innerHTML="Votre panier est vide";
+contenu.innerHTML=html;
 
 
 }
 
 
 
-function supprimer(){
+function supprimer(index){
 
-localStorage.clear();
 
-location.reload();
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+panier.splice(index,1);
+
+
+localStorage.setItem("panier",JSON.stringify(panier));
+
+
+afficherPanier();
+
 
 }
+
+
+
+afficherPanier();
 
 
 </script>
 
 
-
 </body>
 
 </html>
-
