@@ -4,110 +4,94 @@
 <head>
 
 <meta charset="UTF-8">
+
 <title>Panier Corbyte</title>
+
 
 <style>
 
-body {
+body{
 
-    margin:0;
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
+background:#050505;
 
-}
+color:white;
 
+font-family:Arial;
 
-h1 {
-
-    color:#ff003c;
-    margin-top:40px;
-
-}
-
-
-.panier-box {
-
-    width:600px;
-    max-width:90%;
-
-    margin:50px auto;
-
-    background:#111;
-
-    border:2px solid #ff003c;
-
-    border-radius:20px;
-
-    padding:30px;
+text-align:center;
 
 }
 
 
 
-.produit {
+h1{
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:30px;
+color:#ff003c;
 
 }
 
 
 
-.produit img {
+.box{
 
-    width:150px;
+width:700px;
 
-}
+max-width:90%;
 
+margin:40px auto;
 
+background:#111;
 
-.prix {
+border:2px solid #ff003c;
 
-    color:#ff003c;
+border-radius:20px;
 
-    font-size:28px;
-
-    font-weight:bold;
-
-}
-
-
-
-button {
-
-    background:#ff003c;
-
-    color:white;
-
-    border:none;
-
-    padding:15px 30px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-size:17px;
+padding:30px;
 
 }
 
 
 
-a {
+img{
 
-    text-decoration:none;
+width:150px;
 
 }
+
+
+
+.prix{
+
+color:#ff003c;
+
+font-size:25px;
+
+font-weight:bold;
+
+}
+
+
+
+button{
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
 
 
 </style>
+
 
 </head>
 
@@ -121,8 +105,7 @@ Votre panier
 
 
 
-<div class="panier-box" id="contenu">
-
+<div class="box" id="contenu">
 
 </div>
 
@@ -132,66 +115,96 @@ Votre panier
 <script>
 
 
+function afficherPanier(){
+
+
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-
-let contenu = document.getElementById("contenu");
-
+let contenu=document.getElementById("contenu");
 
 
-if(panier.length === 0){
+
+if(panier.length===0){
 
 
-contenu.innerHTML = "Votre panier est vide";
+contenu.innerHTML="Panier vide";
 
+
+return;
 
 }
 
 
-else{
+
+let total=0;
+
+let html="";
 
 
-let pc = panier[0];
+
+panier.forEach((pc,index)=>{
 
 
-contenu.innerHTML = `
+let prixTotal = pc.prix * pc.quantite;
 
 
-<div class="produit">
+total += prixTotal;
+
+
+
+html += `
 
 
 <img src="${pc.image}">
 
 
-<div>
-
 <h2>${pc.nom}</h2>
+
+
+<p>
+Quantité : ${pc.quantite}
+</p>
+
+
+<p>
+Prix unitaire : ${pc.prix} €
+</p>
 
 
 <div class="prix">
 
-${pc.prix} €
+Sous-total : ${prixTotal} €
 
 </div>
 
 
-<br>
-
-
-<button onclick="supprimer()">
+<button onclick="supprimer(${index})">
 
 🗑️ Supprimer
 
 </button>
 
 
-</div>
+<hr>
 
 
-</div>
+`;
 
 
-<br><br>
+
+});
+
+
+
+html += `
+
+
+<h2>
+
+Total : ${total} €
+
+</h2>
+
 
 
 <a href="commande.html">
@@ -207,21 +220,36 @@ Commander
 
 `;
 
+
+
+contenu.innerHTML=html;
+
+
+}
+
+
+
+function supprimer(index){
+
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+panier.splice(index,1);
+
+
+localStorage.setItem("panier",JSON.stringify(panier));
+
+
+afficherPanier();
+
+
 }
 
 
 
+afficherPanier();
 
-function supprimer(){
-
-
-localStorage.removeItem("panier");
-
-
-location.reload();
-
-
-}
 
 
 </script>
