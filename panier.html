@@ -19,7 +19,6 @@ font-family:Arial;
 }
 
 
-
 h1 {
 
 text-align:center;
@@ -29,7 +28,7 @@ color:#ff003c;
 
 
 
-.card {
+.panier-box {
 
 width:500px;
 
@@ -41,7 +40,9 @@ border:2px solid #ff003c;
 
 border-radius:20px;
 
-padding:20px;
+padding:25px;
+
+text-align:center;
 
 }
 
@@ -55,14 +56,15 @@ color:white;
 
 border:none;
 
-padding:12px 20px;
+padding:12px 25px;
 
 border-radius:10px;
 
 cursor:pointer;
 
-}
+font-size:16px;
 
+}
 
 
 </style>
@@ -75,12 +77,13 @@ cursor:pointer;
 
 
 <h1>
-Mon panier
+Votre panier
 </h1>
 
 
 
-<div class="card" id="contenu">
+<div class="panier-box" id="panier">
+
 
 </div>
 
@@ -89,7 +92,7 @@ Mon panier
 <script>
 
 
-let produit = localStorage.getItem("panier");
+let produit = localStorage.getItem("produit");
 
 let prix = localStorage.getItem("prix");
 
@@ -98,11 +101,14 @@ let prix = localStorage.getItem("prix");
 if(produit){
 
 
-document.getElementById("contenu").innerHTML=`
+document.getElementById("panier").innerHTML = `
+
 
 <h2>${produit}</h2>
 
+
 <p>${prix} €</p>
+
 
 <button onclick="supprimer()">
 
@@ -110,8 +116,18 @@ document.getElementById("contenu").innerHTML=`
 
 </button>
 
-`;
 
+<br><br>
+
+
+<button>
+
+Commander
+
+</button>
+
+
+`;
 
 
 }
@@ -119,7 +135,7 @@ document.getElementById("contenu").innerHTML=`
 else{
 
 
-document.getElementById("contenu").innerHTML="Panier vide";
+document.getElementById("panier").innerHTML="Votre panier est vide";
 
 
 }
@@ -135,11 +151,10 @@ location.reload();
 }
 
 
-
 </script>
+
 
 
 </body>
 
 </html>
-
