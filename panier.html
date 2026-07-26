@@ -72,7 +72,7 @@ h1 {
 
     color:#ff003c;
 
-    font-size:25px;
+    font-size:28px;
 
     font-weight:bold;
 
@@ -88,13 +88,21 @@ button {
 
     border:none;
 
-    padding:12px 25px;
+    padding:15px 30px;
 
     border-radius:10px;
 
     cursor:pointer;
 
-    font-size:16px;
+    font-size:17px;
+
+}
+
+
+
+a {
+
+    text-decoration:none;
 
 }
 
@@ -115,6 +123,7 @@ Votre panier
 
 <div class="panier-box" id="contenu">
 
+
 </div>
 
 
@@ -124,6 +133,7 @@ Votre panier
 
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
 
 let contenu = document.getElementById("contenu");
 
@@ -136,6 +146,7 @@ contenu.innerHTML = "Votre panier est vide";
 
 
 }
+
 
 else{
 
@@ -180,8 +191,10 @@ ${pc.prix} €
 </div>
 
 
-<br>
+<br><br>
 
+
+<a href="commande.html">
 
 <button>
 
@@ -189,10 +202,13 @@ Commander
 
 </button>
 
+</a>
+
 
 `;
 
 }
+
 
 
 
@@ -211,7 +227,7 @@ location.reload();
 </script>
 
 
+
 </body>
 
 </html>
-v
