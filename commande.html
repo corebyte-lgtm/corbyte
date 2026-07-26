@@ -6,41 +6,26 @@
 <meta charset="UTF-8">
 <title>Commande Corbyte</title>
 
-
 <style>
 
-
 body {
-
     margin:0;
-
     background:#050505;
-
     color:white;
-
     font-family:Arial,sans-serif;
-
     text-align:center;
-
 }
-
 
 
 h1 {
-
     color:#ff003c;
-
     margin-top:40px;
-
 }
-
 
 
 .formulaire {
 
-
     width:500px;
-
     max-width:90%;
 
     margin:40px auto;
@@ -53,13 +38,11 @@ h1 {
 
     padding:30px;
 
-
 }
 
 
 
 input {
-
 
     width:90%;
 
@@ -71,13 +54,11 @@ input {
 
     border:none;
 
-
 }
 
 
 
 button {
-
 
     background:#ff003c;
 
@@ -93,12 +74,10 @@ button {
 
     font-size:17px;
 
-
 }
 
 
 </style>
-
 
 </head>
 
@@ -106,9 +85,8 @@ button {
 <body>
 
 
-
 <h1>
-Finaliser votre commande
+Informations client
 </h1>
 
 
@@ -116,32 +94,31 @@ Finaliser votre commande
 <div class="formulaire">
 
 
-
-<input placeholder="Nom et prénom">
-
-
-<input placeholder="Adresse">
+<input id="nom" placeholder="Nom et prénom">
 
 
-<input placeholder="Code postal">
+<input id="adresse" placeholder="Adresse">
 
 
-<input placeholder="Ville">
+<input id="code" placeholder="Code postal">
 
 
-<input placeholder="Adresse mail">
+<input id="ville" placeholder="Ville">
 
 
-<input placeholder="Numéro de téléphone">
+<input id="mail" placeholder="Adresse mail">
+
+
+<input id="telephone" placeholder="Numéro de téléphone">
 
 
 
 <br>
 
 
-<button>
+<button onclick="continuer()">
 
-Continuer vers le paiement
+Continuer
 
 </button>
 
@@ -149,6 +126,44 @@ Continuer vers le paiement
 
 </div>
 
+
+
+
+<script>
+
+
+function continuer(){
+
+
+let client = {
+
+nom: document.getElementById("nom").value,
+
+adresse: document.getElementById("adresse").value,
+
+code: document.getElementById("code").value,
+
+ville: document.getElementById("ville").value,
+
+mail: document.getElementById("mail").value,
+
+telephone: document.getElementById("telephone").value
+
+};
+
+
+
+localStorage.setItem("client", JSON.stringify(client));
+
+
+
+window.location.href="recap.html";
+
+
+}
+
+
+</script>
 
 
 
