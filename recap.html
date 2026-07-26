@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Récapitulatif Corbyte</title>
+
+
+<style>
+
+body {
+
+    margin:0;
+
+    background:#050505;
+
+    color:white;
+
+    font-family:Arial;
+
+    text-align:center;
+
+}
+
+
+
+h1 {
+
+    color:#ff003c;
+
+    margin-top:40px;
+
+}
+
+
+
+.box {
+
+    width:600px;
+
+    max-width:90%;
+
+    margin:40px auto;
+
+    background:#111;
+
+    border:2px solid #ff003c;
+
+    border-radius:20px;
+
+    padding:30px;
+
+}
+
+
+
+button {
+
+    background:#ff003c;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<h1>
+Récapitulatif de commande
+</h1>
+
+
+
+<div class="box" id="contenu">
+
+
+</div>
+
+
+
+
+<script>
+
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+let client = JSON.parse(localStorage.getItem("client")) || {};
+
+
+
+let pc = panier[0];
+
+
+
+document.getElementById("contenu").innerHTML = `
+
+
+<h2>
+${pc.nom}
+</h2>
+
+
+<p>
+Prix : ${pc.prix} €
+</p>
+
+
+<hr>
+
+
+<h2>
+Informations de livraison
+</h2>
+
+
+<p>
+
+${client.nom}<br>
+
+${client.adresse}<br>
+
+${client.code} ${client.ville}<br>
+
+${client.mail}<br>
+
+${client.telephone}
+
+</p>
+
+
+
+<br>
+
+
+<button>
+
+Passer au paiement
+
+</button>
+
+
+`;
+
+
+
+</script>
+
+
+</body>
+
+</html>
