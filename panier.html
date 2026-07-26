@@ -80,7 +80,7 @@ color:white;
 
 border:none;
 
-padding:15px 30px;
+padding:12px 25px;
 
 border-radius:10px;
 
@@ -115,6 +115,7 @@ Votre panier
 <script>
 
 
+
 function afficherPanier(){
 
 
@@ -129,8 +130,8 @@ if(panier.length===0){
 
 contenu.innerHTML="Panier vide";
 
-
 return;
+
 
 }
 
@@ -145,10 +146,10 @@ let html="";
 panier.forEach((pc,index)=>{
 
 
-let prixTotal = pc.prix * pc.quantite;
+let sousTotal = pc.prix * pc.quantite;
 
 
-total += prixTotal;
+total += sousTotal;
 
 
 
@@ -162,25 +163,30 @@ html += `
 
 
 <p>
+
 Quantité : ${pc.quantite}
+
 </p>
 
 
 <p>
+
 Prix unitaire : ${pc.prix} €
+
 </p>
 
 
 <div class="prix">
 
-Sous-total : ${prixTotal} €
+Sous-total : ${sousTotal} €
 
 </div>
 
 
-<button onclick="supprimer(${index})">
 
-🗑️ Supprimer
+<button onclick="retirer(${index})">
+
+🗑️ Supprimer 1
 
 </button>
 
@@ -229,16 +235,34 @@ contenu.innerHTML=html;
 
 
 
-function supprimer(index){
+
+function retirer(index){
 
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
+
+if(panier[index].quantite > 1){
+
+
+panier[index].quantite--;
+
+
+}
+
+else{
+
+
 panier.splice(index,1);
 
 
+}
+
+
+
 localStorage.setItem("panier",JSON.stringify(panier));
+
 
 
 afficherPanier();
@@ -248,8 +272,8 @@ afficherPanier();
 
 
 
-afficherPanier();
 
+afficherPanier();
 
 
 </script>
