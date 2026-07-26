@@ -18,6 +18,30 @@ body {
 }
 
 
+.panier-icon {
+
+    position:fixed;
+    top:20px;
+    right:30px;
+
+    background:#ff003c;
+    padding:12px 18px;
+
+    border-radius:15px;
+
+}
+
+
+.panier-icon a {
+
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+
+}
+
+
+
 .container {
 
     text-align:center;
@@ -29,7 +53,6 @@ body {
 h1 {
 
     color:#ff003c;
-    font-size:45px;
 
 }
 
@@ -50,12 +73,11 @@ h1 {
 }
 
 
-.pc-image img {
+img {
 
     width:300px;
 
 }
-
 
 
 .price {
@@ -69,32 +91,18 @@ h1 {
 }
 
 
-
-li {
-
-    text-align:left;
-
-    margin:10px;
-
-}
-
-
-
 button {
 
     background:#ff003c;
-
     color:white;
 
     border:none;
 
-    padding:15px 35px;
+    padding:15px 30px;
 
     border-radius:10px;
 
     cursor:pointer;
-
-    font-size:18px;
 
 }
 
@@ -104,8 +112,21 @@ button {
 </head>
 
 
-
 <body>
+
+
+
+<div class="panier-icon">
+
+<a href="panier.html">
+
+🛒 <span id="nombre">0</span>
+
+</a>
+
+</div>
+
+
 
 
 <div class="container">
@@ -120,11 +141,7 @@ CORBYTE SHADOW
 <div class="card">
 
 
-<div class="pc-image">
-
 <img src="shadow-pc.png">
-
-</div>
 
 
 
@@ -140,42 +157,30 @@ PC Gaming RX 9060 XT
 
 
 
-<h2>
+<h3>
 Configuration
-</h2>
+</h3>
 
 
-
-<ul>
-
-<li>AMD Ryzen 7 5700X</li>
-
-<li>Sapphire RX 9060 XT 16 Go</li>
-
-<li>16 Go RAM DDR4 3200 MHz</li>
-
-<li>SSD NVMe 1 To</li>
-
-<li>MSI B550 Gaming WiFi</li>
-
-<li>Thermalright Assassin X120</li>
-
-<li>MSI MAG A650BN</li>
-
-<li>MSI MAG Forge 120A Airflow</li>
-
-</ul>
+<p>
+Ryzen 7 5700X<br>
+RX 9060 XT 16 Go<br>
+16 Go RAM DDR4<br>
+SSD NVMe 1 To<br>
+MSI B550 Gaming WiFi
+</p>
 
 
 
 <button onclick="ajouterPanier()">
+
 Ajouter au panier
+
 </button>
 
 
 
 </div>
-
 
 </div>
 
@@ -183,19 +188,26 @@ Ajouter au panier
 
 <script>
 
+
 function ajouterPanier(){
 
-localStorage.setItem("produit","Corbyte Shadow");
+
+localStorage.setItem("panier","Corbyte Shadow");
+
 
 localStorage.setItem("prix","1295");
 
 
-window.location.href="panier.html";
+
+document.getElementById("nombre").innerHTML="1";
+
 
 }
 
 
+
 </script>
+
 
 
 </body>
