@@ -24,12 +24,11 @@ top:20px;
 right:30px;
 
 background:#ff003c;
-
 padding:12px 20px;
 
 border-radius:15px;
 
-z-index:10;
+z-index:100;
 
 }
 
@@ -84,7 +83,6 @@ font-weight:bold;
 button{
 
 background:#ff003c;
-
 color:white;
 
 border:none;
@@ -99,14 +97,12 @@ font-size:17px;
 
 }
 
-
 </style>
 
 </head>
 
 
 <body>
-
 
 
 <div class="panier">
@@ -118,7 +114,6 @@ font-size:17px;
 </a>
 
 </div>
-
 
 
 
@@ -139,9 +134,10 @@ PC Gaming RX 9060 XT
 </h2>
 
 
-
 <div class="prix">
+
 1295 €
+
 </div>
 
 
@@ -158,7 +154,7 @@ Configuration complète
 
 🎮 Sapphire RX 9060 XT 16 Go<br>
 
-🧠 Patriot Viper Steel DDR4 16 Go (2x8)<br>
+🧠 Patriot Viper Steel DDR4 16 Go<br>
 
 💾 Silicon Power NVMe 1 To<br>
 
@@ -174,7 +170,7 @@ Configuration complète
 
 
 
-<button onclick="ajouterPanier()" id="bouton">
+<button onclick="ajouterPanier()">
 
 Ajouter au panier
 
@@ -189,11 +185,21 @@ Ajouter au panier
 <script>
 
 
-function compteur(){
+function afficherCompteur(){
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-document.getElementById("compteur").innerHTML = panier.length;
+let total = 0;
+
+
+panier.forEach(pc => {
+
+total += pc.quantite;
+
+});
+
+
+document.getElementById("compteur").innerHTML = total;
 
 }
 
@@ -205,34 +211,54 @@ function ajouterPanier(){
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
-let pc={
+
+let existant = panier.find(pc => pc.nom === "Corbyte Shadow");
+
+
+
+if(existant){
+
+
+existant.quantite++;
+
+
+}
+
+else{
+
+
+panier.push({
 
 nom:"Corbyte Shadow",
 
 prix:1295,
 
-image:"shadow-pc.png"
+image:"shadow-pc.png",
 
-};
+quantite:1
 
-
-panier.push(pc);
-
-
-localStorage.setItem("panier",JSON.stringify(panier));
-
-
-document.getElementById("bouton").innerHTML="Ajouté ✓";
-
-
-compteur();
+});
 
 
 }
 
 
 
-compteur();
+localStorage.setItem("panier",JSON.stringify(panier));
+
+
+
+afficherCompteur();
+
+
+alert("PC ajouté au panier");
+
+
+}
+
+
+
+afficherCompteur();
 
 
 </script>
