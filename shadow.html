@@ -8,105 +8,94 @@
 
 <style>
 
-body {
-    margin:0;
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
+body{
+margin:0;
+background:#050505;
+color:white;
+font-family:Arial;
+text-align:center;
 }
 
 
-.panier {
+.panier{
 
-    position:fixed;
-    top:20px;
-    right:30px;
+position:fixed;
+top:20px;
+right:30px;
 
-    background:#ff003c;
-    padding:12px 20px;
+background:#ff003c;
 
-    border-radius:15px;
+padding:12px 20px;
 
-}
+border-radius:15px;
 
-
-.panier a {
-
-    color:white;
-    text-decoration:none;
-
-    font-size:22px;
+z-index:10;
 
 }
 
 
+.panier a{
 
-.card {
-
-    width:700px;
-
-    max-width:90%;
-
-    margin:60px auto;
-
-    background:#111;
-
-    border:2px solid #ff003c;
-
-    border-radius:20px;
-
-    padding:30px;
+color:white;
+text-decoration:none;
+font-size:22px;
 
 }
 
 
 
-img {
+.card{
 
-    width:300px;
+width:700px;
+max-width:90%;
 
-}
+margin:70px auto;
 
+background:#111;
 
+border:2px solid #ff003c;
 
-.prix {
+border-radius:20px;
 
-    color:#ff003c;
-
-    font-size:30px;
-
-    font-weight:bold;
-
-}
-
-
-
-.composants {
-
-    text-align:left;
-
-    line-height:1.8;
+padding:30px;
 
 }
 
 
 
-button {
+img{
 
-    background:#ff003c;
+width:300px;
 
-    color:white;
+}
 
-    border:none;
 
-    padding:15px 30px;
 
-    border-radius:10px;
+.prix{
 
-    cursor:pointer;
+color:#ff003c;
+font-size:30px;
+font-weight:bold;
 
-    font-size:18px;
+}
+
+
+
+button{
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:17px;
 
 }
 
@@ -162,31 +151,30 @@ Configuration complète
 </h2>
 
 
-<div class="composants">
 
-⚙️ AMD Ryzen 7 5700X<br>
+<p>
 
-🎮 Sapphire Pulse RX 9060 XT 16 Go<br>
+⚙️ Ryzen 7 5700X<br>
 
-🧠 Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16<br>
+🎮 Sapphire RX 9060 XT 16 Go<br>
+
+🧠 Patriot Viper Steel DDR4 16 Go (2x8)<br>
 
 💾 Silicon Power NVMe 1 To<br>
 
-🔧 MSI B550 Gaming WiFi ATX PCIe 4.0<br>
+🔧 MSI B550 Gaming WiFi<br>
 
-❄️ Thermalright Assassin X120 Digital ARGB<br>
+❄️ Thermalright Assassin X120 ARGB<br>
 
 🔌 MSI MAG A650BN 650W<br>
 
 🖥️ MSI MAG Forge 120A Airflow
 
-</div>
+</p>
 
 
-<br>
 
-
-<button id="bouton" onclick="ajouterPanier()">
+<button onclick="ajouterPanier()" id="bouton">
 
 Ajouter au panier
 
@@ -198,11 +186,10 @@ Ajouter au panier
 
 
 
-
 <script>
 
 
-function afficherCompteur(){
+function compteur(){
 
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
@@ -218,8 +205,7 @@ function ajouterPanier(){
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
-
-let pc = {
+let pc={
 
 nom:"Corbyte Shadow",
 
@@ -230,26 +216,23 @@ image:"shadow-pc.png"
 };
 
 
-
 panier.push(pc);
 
 
-
-localStorage.setItem("panier", JSON.stringify(panier));
-
+localStorage.setItem("panier",JSON.stringify(panier));
 
 
 document.getElementById("bouton").innerHTML="Ajouté ✓";
 
 
-afficherCompteur();
+compteur();
 
 
 }
 
 
 
-afficherCompteur();
+compteur();
 
 
 </script>
