@@ -17,29 +17,36 @@ body {
 }
 
 
+/* Logo */
+
 header {
-    padding: 30px;
-    text-align: center;
+    padding: 25px 50px;
+}
+
+.logo img {
+    width: 180px;
 }
 
 
-.logo {
-    font-size: 45px;
-    font-weight: bold;
-    color: #ff003c;
-}
-
-
+/* Accueil */
 
 .hero {
-    text-align: center;
-    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 80vh;
+    padding: 20px;
 }
 
+
+.text {
+    max-width: 600px;
+}
 
 
 h1 {
-    font-size: 60px;
+    font-size: 65px;
+    margin: 0;
 }
 
 
@@ -48,43 +55,36 @@ h1 span {
 }
 
 
-
 p {
     font-size: 22px;
     color: #cccccc;
 }
 
 
+/* Image PC */
+
+.pc img {
+    width: 450px;
+    max-width: 90%;
+}
+
+
+/* Bouton */
 
 button {
     margin-top: 30px;
+    padding: 18px 40px;
     background: #ff003c;
     color: white;
     border: none;
-    padding: 18px 40px;
-    font-size: 20px;
     border-radius: 10px;
+    font-size: 18px;
     cursor: pointer;
 }
 
 
-
 button:hover {
     background: #ff3366;
-}
-
-
-
-.pc {
-    margin: 50px auto;
-    width: 400px;
-    height: 250px;
-    border: 2px solid #ff003c;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: grey;
 }
 
 
@@ -99,14 +99,17 @@ button:hover {
 <header>
 
 <div class="logo">
-CORBYTE
+<img src="Logo.png" alt="Logo Corbyte">
 </div>
 
 </header>
 
 
 
-<div class="hero">
+<section class="hero">
+
+
+<div class="text">
 
 <h1>
 Le futur du <span>PC Gaming</span>
@@ -114,25 +117,30 @@ Le futur du <span>PC Gaming</span>
 
 
 <p>
-Des PC puissants assemblés par passion.
+Des PC puissants assemblés avec passion.
 </p>
 
 
-<div class="pc">
-<img src="Logo.png" alt="PC Gaming Corbyte">
-</div>
-
-
 <a href="pc.html">
-
 <button>
 Découvrir nos PC
 </button>
-
 </a>
 
 
 </div>
+
+
+
+<div class="pc">
+
+<!-- Mets ton image de PC ici plus tard -->
+
+</div>
+
+
+
+</section>
 
 
 </body>
