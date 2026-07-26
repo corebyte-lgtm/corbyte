@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Nos PC - CORBYTE</title>
+</head>
+
+<body style="background:#111;color:white;font-family:Arial;text-align:center;">
+
+<h1>Nos PC Gaming</h1>
+
+<h2>CORBYTE FROST</h2>
+<p>Ryzen 5 • RTX 4060 • 16 Go RAM • SSD 1 To</p>
+<p><strong>1199 €</strong></p>
+
+<hr>
+
+<h2>CORBYTE PHANTOM</h2>
+<p>Ryzen 7 • RTX 5070 • 32 Go RAM • SSD 2 To</p>
+<p><strong>1799 €</strong></p>
+
+<hr>
+
+<h2>CORBYTE TITAN</h2>
+<p>Ryzen 9 • RTX 5080 • 64 Go RAM • SSD 4 To</p>
+<p><strong>2899 €</strong></p>
+
+</body>
+</html>v
