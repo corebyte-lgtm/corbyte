@@ -9,17 +9,46 @@
 <style>
 
 body {
+    margin:0;
     background:#050505;
     color:white;
-    font-family:Arial;
+    font-family:Arial,sans-serif;
     text-align:center;
 }
 
 
+.panier {
+
+    position:fixed;
+    top:20px;
+    right:30px;
+
+    background:#ff003c;
+    padding:12px 20px;
+
+    border-radius:15px;
+
+}
+
+
+.panier a {
+
+    color:white;
+    text-decoration:none;
+
+    font-size:22px;
+
+}
+
+
+
 .card {
 
-    width:600px;
-    margin:50px auto;
+    width:700px;
+
+    max-width:90%;
+
+    margin:60px auto;
 
     background:#111;
 
@@ -32,9 +61,35 @@ body {
 }
 
 
+
 img {
+
     width:300px;
+
 }
+
+
+
+.prix {
+
+    color:#ff003c;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+
+
+.composants {
+
+    text-align:left;
+
+    line-height:1.8;
+
+}
+
 
 
 button {
@@ -43,7 +98,7 @@ button {
 
     color:white;
 
-    border:0;
+    border:none;
 
     padding:15px 30px;
 
@@ -55,12 +110,27 @@ button {
 
 }
 
+
 </style>
 
 </head>
 
 
 <body>
+
+
+
+<div class="panier">
+
+<a href="panier.html">
+
+🛒 <span id="compteur">0</span>
+
+</a>
+
+</div>
+
+
 
 
 <div class="card">
@@ -74,29 +144,49 @@ CORBYTE SHADOW
 <img src="shadow-pc.png">
 
 
+
 <h2>
 PC Gaming RX 9060 XT
 </h2>
 
 
-<h2>
+
+<div class="prix">
 1295 €
+</div>
+
+
+
+<h2>
+Configuration complète
 </h2>
 
 
-<p>
+<div class="composants">
 
-Ryzen 7 5700X<br>
-RX 9060 XT 16 Go<br>
-16 Go DDR4<br>
-SSD NVMe 1 To<br>
-MSI B550 Gaming WiFi
+⚙️ AMD Ryzen 7 5700X<br>
 
-</p>
+🎮 Sapphire Pulse RX 9060 XT 16 Go<br>
+
+🧠 Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16<br>
+
+💾 Silicon Power NVMe 1 To<br>
+
+🔧 MSI B550 Gaming WiFi ATX PCIe 4.0<br>
+
+❄️ Thermalright Assassin X120 Digital ARGB<br>
+
+🔌 MSI MAG A650BN 650W<br>
+
+🖥️ MSI MAG Forge 120A Airflow
+
+</div>
 
 
+<br>
 
-<button onclick="ajouterPanier()">
+
+<button id="bouton" onclick="ajouterPanier()">
 
 Ajouter au panier
 
@@ -108,22 +198,58 @@ Ajouter au panier
 
 
 
+
 <script>
+
+
+function afficherCompteur(){
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+document.getElementById("compteur").innerHTML = panier.length;
+
+}
+
 
 
 function ajouterPanier(){
 
 
-localStorage.setItem("corbyte_pc","Corbyte Shadow");
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 
-localStorage.setItem("corbyte_prix","1295");
+
+let pc = {
+
+nom:"Corbyte Shadow",
+
+prix:1295,
+
+image:"shadow-pc.png"
+
+};
 
 
-window.location.href="panier.html";
+
+panier.push(pc);
+
+
+
+localStorage.setItem("panier", JSON.stringify(panier));
+
+
+
+document.getElementById("bouton").innerHTML="Ajouté ✓";
+
+
+afficherCompteur();
 
 
 }
+
+
+
+afficherCompteur();
 
 
 </script>
