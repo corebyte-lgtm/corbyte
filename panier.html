@@ -6,125 +6,44 @@
 <meta charset="UTF-8">
 <title>Panier Corbyte</title>
 
-
-<style>
-
-body {
-
-background:#050505;
-
-color:white;
-
-font-family:Arial;
-
-text-align:center;
-
-}
-
-
-h1 {
-
-color:#ff003c;
-
-}
-
-
-.box {
-
-width:500px;
-
-margin:50px auto;
-
-background:#111;
-
-border:2px solid #ff003c;
-
-border-radius:20px;
-
-padding:25px;
-
-}
-
-
-
-img {
-
-width:120px;
-
-}
-
-
-
-button {
-
-background:#ff003c;
-
-color:white;
-
-border:none;
-
-padding:12px 25px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-}
-
-
-</style>
-
 </head>
 
 
-<body>
+<body style="background:#050505;color:white;text-align:center;font-family:Arial;">
 
 
-<h1>
+<h1 style="color:#ff003c;">
 Mon panier
 </h1>
 
 
 
-<div class="box" id="panier">
+<div id="contenu">
 
 
 </div>
 
 
 
-
 <script>
 
 
-let produits = JSON.parse(localStorage.getItem("panier")) || [];
+let pc = localStorage.getItem("corbyte_pc");
+
+let prix = localStorage.getItem("corbyte_prix");
 
 
-let zone = document.getElementById("panier");
+
+if(pc){
 
 
+document.getElementById("contenu").innerHTML =
 
-if(produits.length === 0){
+`
 
+<h2>${pc}</h2>
 
-zone.innerHTML="Panier vide";
-
-
-}
-
-else{
-
-
-let pc = produits[0];
-
-
-zone.innerHTML = `
-
-<img src="${pc.image}">
-
-<h2>${pc.nom}</h2>
-
-<p>${pc.prix} €</p>
+<h3>${prix} €</h3>
 
 <button onclick="supprimer()">
 
@@ -137,14 +56,24 @@ zone.innerHTML = `
 }
 
 
+else{
+
+
+document.getElementById("contenu").innerHTML=
+
+"Panier vide";
+
+
+}
+
+
+
 
 function supprimer(){
 
-
-localStorage.removeItem("panier");
+localStorage.clear();
 
 location.reload();
-
 
 }
 
