@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Corbyte - Panier</title>
+
+
+<style>
+
+body {
+
+background:#050505;
+color:white;
+font-family:Arial,sans-serif;
+
+}
+
+
+h1 {
+
+color:#ff003c;
+text-align:center;
+margin-top:40px;
+
+}
+
+
+
+.panier {
+
+width:500px;
+
+margin:50px auto;
+
+background:#111;
+
+border:2px solid #ff003c;
+
+border-radius:20px;
+
+padding:25px;
+
+}
+
+
+
+button {
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<h1>
+Votre panier
+</h1>
+
+
+
+<div class="panier">
+
+
+<h2 id="produit">
+Panier vide
+</h2>
+
+
+<p id="prix"></p>
+
+
+<br>
+
+
+<button>
+Commander
+</button>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+let produit = localStorage.getItem("produit");
+
+let prix = localStorage.getItem("prix");
+
+
+
+if(produit){
+
+
+document.getElementById("produit").innerHTML = produit;
+
+
+document.getElementById("prix").innerHTML = prix + " €";
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
