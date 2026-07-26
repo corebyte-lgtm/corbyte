@@ -4,80 +4,93 @@
 <head>
 
 <meta charset="UTF-8">
+
 <title>Commande Corbyte</title>
+
 
 <style>
 
-body {
-    margin:0;
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
-}
+body{
 
-
-h1 {
-    color:#ff003c;
-    margin-top:40px;
-}
-
-
-.formulaire {
-
-    width:500px;
-    max-width:90%;
-
-    margin:40px auto;
-
-    background:#111;
-
-    border:2px solid #ff003c;
-
-    border-radius:20px;
-
-    padding:30px;
+background:#050505;
+color:white;
+font-family:Arial;
+text-align:center;
 
 }
 
 
+h1{
 
-input {
+color:#ff003c;
 
-    width:90%;
+}
 
-    padding:13px;
 
-    margin:10px;
+.formulaire{
 
-    border-radius:8px;
+width:500px;
+max-width:90%;
 
-    border:none;
+margin:40px auto;
+
+background:#111;
+
+border:2px solid #ff003c;
+
+border-radius:20px;
+
+padding:30px;
 
 }
 
 
 
-button {
+input{
 
-    background:#ff003c;
+width:90%;
 
-    color:white;
+padding:13px;
 
-    border:none;
+margin:10px;
 
-    padding:15px 30px;
+border-radius:8px;
 
-    border-radius:10px;
+border:none;
 
-    cursor:pointer;
+}
 
-    font-size:17px;
+
+
+button{
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+
+
+#erreur{
+
+color:red;
+
+font-size:18px;
 
 }
 
 
 </style>
+
 
 </head>
 
@@ -96,24 +109,20 @@ Informations client
 
 <input id="nom" placeholder="Nom et prénom">
 
-
 <input id="adresse" placeholder="Adresse">
-
 
 <input id="code" placeholder="Code postal">
 
-
 <input id="ville" placeholder="Ville">
 
-
 <input id="mail" placeholder="Adresse mail">
-
 
 <input id="telephone" placeholder="Numéro de téléphone">
 
 
 
-<br>
+<p id="erreur"></p>
+
 
 
 <button onclick="continuer()">
@@ -135,25 +144,57 @@ Continuer
 function continuer(){
 
 
-let client = {
+let nom=document.getElementById("nom").value;
 
-nom: document.getElementById("nom").value,
+let adresse=document.getElementById("adresse").value;
 
-adresse: document.getElementById("adresse").value,
+let code=document.getElementById("code").value;
 
-code: document.getElementById("code").value,
+let ville=document.getElementById("ville").value;
 
-ville: document.getElementById("ville").value,
+let mail=document.getElementById("mail").value;
 
-mail: document.getElementById("mail").value,
+let telephone=document.getElementById("telephone").value;
 
-telephone: document.getElementById("telephone").value
+
+
+if(
+nom=="" ||
+adresse=="" ||
+code=="" ||
+ville=="" ||
+mail=="" ||
+telephone==""
+
+){
+
+
+document.getElementById("erreur").innerHTML=
+
+"⚠️ Merci de remplir tous les champs";
+
+
+return;
+
+
+}
+
+
+
+let client={
+
+nom,
+adresse,
+code,
+ville,
+mail,
+telephone
 
 };
 
 
 
-localStorage.setItem("client", JSON.stringify(client));
+localStorage.setItem("client",JSON.stringify(client));
 
 
 
@@ -161,6 +202,7 @@ window.location.href="recap.html";
 
 
 }
+
 
 
 </script>
