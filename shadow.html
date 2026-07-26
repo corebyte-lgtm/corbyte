@@ -18,7 +18,7 @@ body {
 }
 
 
-.panier-icon {
+.panier {
 
     position:fixed;
     top:20px;
@@ -32,7 +32,7 @@ body {
 }
 
 
-.panier-icon a {
+.panier a {
 
     color:white;
     text-decoration:none;
@@ -53,13 +53,15 @@ body {
 h1 {
 
     color:#ff003c;
+    font-size:45px;
 
 }
 
 
 .card {
 
-    max-width:700px;
+    max-width:750px;
+
     margin:auto;
 
     background:#111;
@@ -73,11 +75,12 @@ h1 {
 }
 
 
-img {
+.pc-image img {
 
     width:300px;
 
 }
+
 
 
 .price {
@@ -91,18 +94,32 @@ img {
 }
 
 
+
+ul {
+
+    text-align:left;
+
+    line-height:1.8;
+
+}
+
+
+
 button {
 
     background:#ff003c;
+
     color:white;
 
     border:none;
 
-    padding:15px 30px;
+    padding:15px 35px;
 
     border-radius:10px;
 
     cursor:pointer;
+
+    font-size:17px;
 
 }
 
@@ -115,17 +132,15 @@ button {
 <body>
 
 
-
-<div class="panier-icon">
+<div class="panier">
 
 <a href="panier.html">
 
-🛒 <span id="nombre">0</span>
+🛒 <span id="compteur">0</span>
 
 </a>
 
 </div>
-
 
 
 
@@ -141,7 +156,11 @@ CORBYTE SHADOW
 <div class="card">
 
 
+<div class="pc-image">
+
 <img src="shadow-pc.png">
+
+</div>
 
 
 
@@ -157,18 +176,31 @@ PC Gaming RX 9060 XT
 
 
 
-<h3>
-Configuration
-</h3>
+<h2>
+Configuration complète
+</h2>
 
 
-<p>
-Ryzen 7 5700X<br>
-RX 9060 XT 16 Go<br>
-16 Go RAM DDR4<br>
-SSD NVMe 1 To<br>
-MSI B550 Gaming WiFi
-</p>
+
+<ul>
+
+<li>⚙️ Processeur : AMD Ryzen 7 5700X</li>
+
+<li>🎮 Carte graphique : Sapphire Pulse AMD Radeon RX 9060 XT 16 Go</li>
+
+<li>🧠 Mémoire : Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16</li>
+
+<li>💾 Stockage : Silicon Power NVMe 1 To</li>
+
+<li>🔧 Carte mère : MSI B550 Gaming WiFi ATX PCIe 4.0</li>
+
+<li>❄️ Refroidissement : Thermalright Assassin X120 Digital ARGB</li>
+
+<li>🔌 Alimentation : MSI MAG A650BN 650W</li>
+
+<li>🖥️ Boîtier : MSI MAG Forge 120A Airflow</li>
+
+</ul>
 
 
 
@@ -182,6 +214,7 @@ Ajouter au panier
 
 </div>
 
+
 </div>
 
 
@@ -192,18 +225,27 @@ Ajouter au panier
 function ajouterPanier(){
 
 
-localStorage.setItem("panier","Corbyte Shadow");
+localStorage.setItem("produit","Corbyte Shadow");
 
 
 localStorage.setItem("prix","1295");
 
 
+localStorage.setItem("ajoute","oui");
 
-document.getElementById("nombre").innerHTML="1";
+
+document.getElementById("compteur").innerHTML="1";
 
 
 }
 
+
+
+if(localStorage.getItem("ajoute")){
+
+document.getElementById("compteur").innerHTML="1";
+
+}
 
 
 </script>
