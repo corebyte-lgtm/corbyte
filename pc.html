@@ -11,31 +11,29 @@
 <style>
 
 body {
-
     margin:0;
     background:#050505;
     color:white;
-    font-family:Arial,sans-serif;
-
+    font-family:Arial, sans-serif;
 }
 
 
 h1 {
-
     color:#ff003c;
     font-size:45px;
     margin:40px;
-
 }
 
 
-/* Carte complète à gauche */
+
+/* Carte PC */
 
 .pc-card {
 
-    width:500px;
-
     margin-left:40px;
+    margin-top:50px;
+
+    width:520px;
 
     background:#111;
 
@@ -49,19 +47,15 @@ h1 {
 
     align-items:center;
 
-    gap:25px;
-
 }
-
 
 
 /* Carré image */
 
 .image-box {
 
-    width:120px;
-
-    height:120px;
+    width:130px;
+    height:130px;
 
     border:2px solid #ff003c;
 
@@ -73,7 +67,7 @@ h1 {
 
     align-items:center;
 
-    flex-shrink:0;
+    margin-right:25px;
 
 }
 
@@ -81,9 +75,8 @@ h1 {
 
 .image-box img {
 
-    max-width:95%;
-
-    max-height:95%;
+    width:100%;
+    height:100%;
 
     object-fit:contain;
 
@@ -91,13 +84,13 @@ h1 {
 
 
 
-/* Partie texte */
+/* Texte */
 
 .info h2 {
 
     margin:0;
 
-    font-size:26px;
+    font-size:28px;
 
 }
 
@@ -105,9 +98,7 @@ h1 {
 
 .info p {
 
-    color:#ccc;
-
-    margin:10px 0;
+    color:#cccccc;
 
 }
 
@@ -117,11 +108,11 @@ h1 {
 
     color:#ff003c;
 
-    font-size:25px;
+    font-size:26px;
 
     font-weight:bold;
 
-    margin-bottom:15px;
+    margin:15px 0;
 
 }
 
@@ -141,8 +132,17 @@ button {
 
     cursor:pointer;
 
+    font-size:15px;
+
 }
 
+
+
+button:hover {
+
+    background:#b8002d;
+
+}
 
 
 </style>
@@ -182,6 +182,7 @@ Corbyte Shadow
 Ryzen 7 5700X<br>
 RX 9060 XT 16 Go
 </p>
+
 
 
 <div class="price">
