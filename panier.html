@@ -6,44 +6,166 @@
 <meta charset="UTF-8">
 <title>Panier Corbyte</title>
 
+<style>
+
+body {
+
+    margin:0;
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+
+}
+
+
+h1 {
+
+    color:#ff003c;
+    margin-top:40px;
+
+}
+
+
+.panier-box {
+
+    width:600px;
+    max-width:90%;
+
+    margin:50px auto;
+
+    background:#111;
+
+    border:2px solid #ff003c;
+
+    border-radius:20px;
+
+    padding:30px;
+
+}
+
+
+
+.produit {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:30px;
+
+}
+
+
+
+.produit img {
+
+    width:150px;
+
+}
+
+
+
+.prix {
+
+    color:#ff003c;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+}
+
+
+
+button {
+
+    background:#ff003c;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+</style>
+
 </head>
 
 
-<body style="background:#050505;color:white;text-align:center;font-family:Arial;">
+<body>
 
 
-<h1 style="color:#ff003c;">
-Mon panier
+<h1>
+Votre panier
 </h1>
 
 
 
-<div id="contenu">
-
+<div class="panier-box" id="contenu">
 
 </div>
+
 
 
 
 <script>
 
 
-let pc = localStorage.getItem("corbyte_pc");
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-let prix = localStorage.getItem("corbyte_prix");
-
-
-
-if(pc){
+let contenu = document.getElementById("contenu");
 
 
-document.getElementById("contenu").innerHTML =
 
-`
+if(panier.length === 0){
 
-<h2>${pc}</h2>
 
-<h3>${prix} €</h3>
+contenu.innerHTML = "Votre panier est vide";
+
+
+}
+
+else{
+
+
+let pc = panier[0];
+
+
+contenu.innerHTML = `
+
+
+<div class="produit">
+
+
+<img src="${pc.image}">
+
+
+<div>
+
+<h2>${pc.nom}</h2>
+
+
+<div class="prix">
+
+${pc.prix} €
+
+</div>
+
+
+<br>
+
 
 <button onclick="supprimer()">
 
@@ -51,29 +173,37 @@ document.getElementById("contenu").innerHTML =
 
 </button>
 
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<button>
+
+Commander
+
+</button>
+
+
 `;
 
 }
 
 
-else{
-
-
-document.getElementById("contenu").innerHTML=
-
-"Panier vide";
-
-
-}
-
-
-
 
 function supprimer(){
 
-localStorage.clear();
+
+localStorage.removeItem("panier");
+
 
 location.reload();
+
 
 }
 
@@ -84,3 +214,4 @@ location.reload();
 </body>
 
 </html>
+v
