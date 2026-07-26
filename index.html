@@ -19,13 +19,51 @@ body {
 }
 
 
+/* Panier */
+
+.panier {
+
+    position: fixed;
+
+    top: 20px;
+
+    right: 30px;
+
+    background: #ff003c;
+
+    padding: 12px 20px;
+
+    border-radius: 15px;
+
+    z-index: 1000;
+
+}
+
+
+.panier a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 22px;
+
+}
+
+
+
+/* Accueil */
+
 .hero {
 
     height: 100vh;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
@@ -37,7 +75,9 @@ body {
 .title-line {
 
     display: flex;
+
     align-items: center;
+
     gap: 40px;
 
 }
@@ -47,6 +87,7 @@ body {
 h1 {
 
     font-size: 55px;
+
     margin: 0;
 
 }
@@ -63,16 +104,19 @@ h1 span {
 p {
 
     font-size: 22px;
+
     color: #cccccc;
 
 }
 
 
-/* Carré logo */
+
+/* Logo */
 
 .logo-box {
 
     width: 220px;
+
     height: 220px;
 
     border: 2px solid #ff003c;
@@ -80,7 +124,9 @@ p {
     border-radius: 20px;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     margin: 30px;
@@ -88,12 +134,15 @@ p {
 }
 
 
+
 .logo-box img {
 
     max-width: 85%;
+
     max-height: 85%;
 
 }
+
 
 
 /* Bouton */
@@ -125,6 +174,21 @@ button {
 <body>
 
 
+<!-- Panier toujours visible -->
+
+<div class="panier">
+
+<a href="panier.html">
+
+🛒 <span id="compteur">0</span>
+
+</a>
+
+</div>
+
+
+
+
 <section class="hero">
 
 
@@ -138,24 +202,31 @@ Le futur du <span>PC Gaming</span>
 </div>
 
 
+
 <p>
 Des PC puissants assemblés avec passion.
 </p>
 
 
 
+
 <div class="logo-box">
+
 
 <img src="Logo.png" alt="Logo Corbyte">
 
+
 </div>
+
 
 
 
 <a href="pc.html">
 
 <button>
+
 Découvrir nos PC
+
 </button>
 
 </a>
@@ -163,6 +234,44 @@ Découvrir nos PC
 
 
 </section>
+
+
+
+
+<script>
+
+
+function afficherCompteur(){
+
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+let nombre = 0;
+
+
+
+panier.forEach(pc => {
+
+nombre += pc.quantite;
+
+});
+
+
+
+document.getElementById("compteur").innerHTML = nombre;
+
+
+}
+
+
+
+afficherCompteur();
+
+
+
+</script>
+
 
 
 </body>
