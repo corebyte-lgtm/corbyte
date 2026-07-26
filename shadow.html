@@ -25,10 +25,8 @@ body {
     right:30px;
 
     background:#ff003c;
-
-    padding:12px 18px;
-
-    border-radius:15px;
+    padding:12px 20px;
+    border-radius:12px;
 
 }
 
@@ -37,6 +35,7 @@ body {
 
     color:white;
     text-decoration:none;
+
     font-size:22px;
 
 }
@@ -57,15 +56,15 @@ h1 {
 
     color:#ff003c;
 
-    font-size:45px;
-
 }
 
 
 
 .card {
 
-    max-width:750px;
+    width:700px;
+
+    max-width:90%;
 
     margin:auto;
 
@@ -101,11 +100,11 @@ h1 {
 
 
 
-ul {
+li {
 
     text-align:left;
 
-    line-height:1.8;
+    margin:8px;
 
 }
 
@@ -117,23 +116,26 @@ button {
 
     color:white;
 
-    border:none;
+    border:0;
 
     padding:15px 30px;
 
     border-radius:10px;
 
-    cursor:pointer;
+    font-size:18px;
 
-    font-size:17px;
+    cursor:pointer;
 
 }
 
 
+#message {
 
-button:hover {
+    margin-top:20px;
 
-    background:#c90030;
+    color:#00ff66;
+
+    font-size:20px;
 
 }
 
@@ -159,7 +161,6 @@ button:hover {
 
 
 
-
 <div class="container">
 
 
@@ -172,7 +173,7 @@ CORBYTE SHADOW
 <div class="card">
 
 
-<img src="shadow-pc.png" alt="Corbyte Shadow">
+<img src="shadow-pc.png">
 
 
 
@@ -181,43 +182,35 @@ PC Gaming RX 9060 XT
 </h2>
 
 
-
 <div class="price">
 1295 €
 </div>
 
 
 
-<h2>
-Configuration complète
-</h2>
-
-
-
 <ul>
 
-<li>⚙️ Processeur : AMD Ryzen 7 5700X</li>
+<li>AMD Ryzen 7 5700X</li>
 
-<li>🎮 Carte graphique : Sapphire Pulse RX 9060 XT 16 Go</li>
+<li>Sapphire RX 9060 XT 16 Go</li>
 
-<li>🧠 RAM : Patriot Viper Steel DDR4 16 Go (2x8 Go) 3200 MHz CL16</li>
+<li>Patriot Viper Steel DDR4 16 Go</li>
 
-<li>💾 Stockage : Silicon Power NVMe 1 To</li>
+<li>Silicon Power NVMe 1 To</li>
 
-<li>🔧 Carte mère : MSI B550 Gaming WiFi ATX PCIe 4.0</li>
+<li>MSI B550 Gaming WiFi</li>
 
-<li>❄️ Refroidissement : Thermalright Assassin X120 Digital ARGB</li>
+<li>Thermalright Assassin X120 ARGB</li>
 
-<li>🔌 Alimentation : MSI MAG A650BN 650W</li>
+<li>MSI MAG A650BN 650W</li>
 
-<li>🖥️ Boîtier : MSI MAG Forge 120A Airflow</li>
+<li>MSI MAG Forge 120A Airflow</li>
 
 </ul>
 
 
 
-
-<button id="btnPanier" onclick="ajouterPanier()">
+<button onclick="ajouterAuPanier()">
 
 Ajouter au panier
 
@@ -225,38 +218,41 @@ Ajouter au panier
 
 
 
+<div id="message"></div>
+
+
 </div>
 
 
 </div>
+
 
 
 
 <script>
 
 
-function mettreAJourCompteur(){
+function ajouterAuPanier(){
 
 
-let panier = JSON.parse(localStorage.getItem("panier")) || [];
+let panier = localStorage.getItem("corbyte_panier");
 
 
-document.getElementById("compteur").innerHTML = panier.length;
+if(panier){
 
+panier = JSON.parse(panier);
+
+}
+
+else{
+
+panier=[];
 
 }
 
 
 
-
-function ajouterPanier(){
-
-
-let panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-
-
-let pc = {
+let pc={
 
 nom:"Corbyte Shadow",
 
@@ -272,16 +268,21 @@ panier.push(pc);
 
 
 
-localStorage.setItem("panier", JSON.stringify(panier));
+localStorage.setItem(
+
+"corbyte_panier",
+
+JSON.stringify(panier)
+
+);
 
 
 
-document.getElementById("btnPanier").innerHTML="Ajouté ✓";
+document.getElementById("compteur").innerHTML = panier.length;
 
 
 
-mettreAJourCompteur();
-
+document.getElementById("message").innerHTML = "✅ PC ajouté au panier";
 
 
 }
@@ -289,11 +290,32 @@ mettreAJourCompteur();
 
 
 
-mettreAJourCompteur();
+function afficherCompteur(){
+
+
+let panier = localStorage.getItem("corbyte_panier");
+
+
+if(panier){
+
+
+panier=JSON.parse(panier);
+
+
+document.getElementById("compteur").innerHTML=panier.length;
+
+
+}
+
+
+}
+
+
+
+afficherCompteur();
 
 
 </script>
-
 
 
 </body>
