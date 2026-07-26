@@ -4,9 +4,8 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Corbyte - Panier</title>
+<title>Panier Corbyte</title>
 
 
 <style>
@@ -15,22 +14,22 @@ body {
 
 background:#050505;
 color:white;
-font-family:Arial,sans-serif;
+font-family:Arial;
 
 }
+
 
 
 h1 {
 
-color:#ff003c;
 text-align:center;
-margin-top:40px;
+color:#ff003c;
 
 }
 
 
 
-.panier {
+.card {
 
 width:500px;
 
@@ -42,7 +41,7 @@ border:2px solid #ff003c;
 
 border-radius:20px;
 
-padding:25px;
+padding:20px;
 
 }
 
@@ -56,7 +55,7 @@ color:white;
 
 border:none;
 
-padding:15px 30px;
+padding:12px 20px;
 
 border-radius:10px;
 
@@ -72,45 +71,25 @@ cursor:pointer;
 </head>
 
 
-
 <body>
 
 
 <h1>
-Votre panier
+Mon panier
 </h1>
 
 
 
-<div class="panier">
-
-
-<h2 id="produit">
-Panier vide
-</h2>
-
-
-<p id="prix"></p>
-
-
-<br>
-
-
-<button>
-Commander
-</button>
-
-
+<div class="card" id="contenu">
 
 </div>
-
 
 
 
 <script>
 
 
-let produit = localStorage.getItem("produit");
+let produit = localStorage.getItem("panier");
 
 let prix = localStorage.getItem("prix");
 
@@ -119,11 +98,39 @@ let prix = localStorage.getItem("prix");
 if(produit){
 
 
-document.getElementById("produit").innerHTML = produit;
+document.getElementById("contenu").innerHTML=`
+
+<h2>${produit}</h2>
+
+<p>${prix} €</p>
+
+<button onclick="supprimer()">
+
+🗑️ Supprimer
+
+</button>
+
+`;
 
 
-document.getElementById("prix").innerHTML = prix + " €";
 
+}
+
+else{
+
+
+document.getElementById("contenu").innerHTML="Panier vide";
+
+
+}
+
+
+
+function supprimer(){
+
+localStorage.clear();
+
+location.reload();
 
 }
 
@@ -132,7 +139,7 @@ document.getElementById("prix").innerHTML = prix + " €";
 </script>
 
 
-
 </body>
 
 </html>
+
