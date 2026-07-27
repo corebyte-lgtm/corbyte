@@ -4,14 +4,13 @@
 <head>
 
 <meta charset="UTF-8">
-
 <title>Commande Corbyte</title>
-
 
 <style>
 
 body{
 
+margin:0;
 background:#050505;
 color:white;
 font-family:Arial;
@@ -23,11 +22,13 @@ text-align:center;
 h1{
 
 color:#ff003c;
+margin-top:40px;
 
 }
 
 
-.formulaire{
+
+.box{
 
 width:500px;
 max-width:90%;
@@ -50,13 +51,15 @@ input{
 
 width:90%;
 
-padding:13px;
+padding:15px;
 
 margin:10px;
 
-border-radius:8px;
+border-radius:10px;
 
 border:none;
+
+font-size:16px;
 
 }
 
@@ -70,23 +73,16 @@ color:white;
 
 border:none;
 
-padding:15px 30px;
+padding:15px 35px;
 
 border-radius:10px;
+
+font-size:18px;
 
 cursor:pointer;
 
 }
 
-
-
-#erreur{
-
-color:red;
-
-font-size:18px;
-
-}
 
 
 </style>
@@ -98,30 +94,37 @@ font-size:18px;
 <body>
 
 
+
 <h1>
-Informations client
+
+Informations de livraison
+
 </h1>
 
 
 
-<div class="formulaire">
+
+<div class="box">
 
 
-<input id="nom" placeholder="Nom et prénom">
+
+<input id="nom" placeholder="Nom complet">
+
 
 <input id="adresse" placeholder="Adresse">
 
+
 <input id="code" placeholder="Code postal">
 
-<input id="ville" placeholder="Ville">
 
-<input id="mail" placeholder="Adresse mail">
+<input id="email" placeholder="Adresse mail">
+
 
 <input id="telephone" placeholder="Numéro de téléphone">
 
 
 
-<p id="erreur"></p>
+<br><br>
 
 
 
@@ -138,10 +141,13 @@ Continuer
 
 
 
+
 <script>
 
 
+
 function continuer(){
+
 
 
 let nom=document.getElementById("nom").value;
@@ -150,28 +156,29 @@ let adresse=document.getElementById("adresse").value;
 
 let code=document.getElementById("code").value;
 
-let ville=document.getElementById("ville").value;
-
-let mail=document.getElementById("mail").value;
+let email=document.getElementById("email").value;
 
 let telephone=document.getElementById("telephone").value;
 
 
 
+
 if(
-nom=="" ||
-adresse=="" ||
-code=="" ||
-ville=="" ||
-mail=="" ||
-telephone==""
+
+nom==="" ||
+
+adresse==="" ||
+
+code==="" ||
+
+email==="" ||
+
+telephone===""
 
 ){
 
 
-document.getElementById("erreur").innerHTML=
-
-"⚠️ Merci de remplir tous les champs";
+alert("Veuillez remplir tous les champs");
 
 
 return;
@@ -181,24 +188,37 @@ return;
 
 
 
+
 let client={
 
-nom,
-adresse,
-code,
-ville,
-mail,
-telephone
+
+nom:nom,
+
+adresse:adresse,
+
+code:code,
+
+email:email,
+
+telephone:telephone
+
 
 };
 
 
 
-localStorage.setItem("client",JSON.stringify(client));
+localStorage.setItem(
+
+"client",
+
+JSON.stringify(client)
+
+);
 
 
 
-window.location.href="recap.html";
+window.location.href="recapitulatif.html";
+
 
 
 }
@@ -210,5 +230,6 @@ window.location.href="recap.html";
 
 
 </body>
+
 
 </html>
