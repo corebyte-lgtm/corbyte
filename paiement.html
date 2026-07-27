@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Paiement Corbyte</title>
+
+
+<style>
+
+body{
+
+margin:0;
+
+background:#050505;
+
+color:white;
+
+font-family:Arial;
+
+text-align:center;
+
+}
+
+
+
+h1{
+
+color:#ff003c;
+
+margin-top:40px;
+
+}
+
+
+
+.box{
+
+width:600px;
+
+max-width:90%;
+
+margin:40px auto;
+
+background:#111;
+
+border:2px solid #ff003c;
+
+border-radius:20px;
+
+padding:30px;
+
+}
+
+
+
+.prix{
+
+color:#ff003c;
+
+font-size:30px;
+
+font-weight:bold;
+
+}
+
+
+
+.option{
+
+background:#050505;
+
+border:1px solid #ff003c;
+
+padding:20px;
+
+margin:15px;
+
+border-radius:15px;
+
+font-size:20px;
+
+}
+
+
+
+button{
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 35px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<h1>
+
+Paiement
+
+</h1>
+
+
+
+
+<div class="box" id="contenu">
+
+
+</div>
+
+
+
+
+<script>
+
+
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+
+let total = 0;
+
+
+
+panier.forEach(pc=>{
+
+
+total += pc.prix * pc.quantite;
+
+
+});
+
+
+
+
+document.getElementById("contenu").innerHTML = `
+
+
+<h2>
+
+Résumé de votre commande
+
+</h2>
+
+
+<p>
+
+Total à payer :
+
+</p>
+
+
+<div class="prix">
+
+${total} €
+
+</div>
+
+
+
+<div class="option">
+
+💳 Carte bancaire
+
+</div>
+
+
+
+<div class="option">
+
+🅿️ PayPal
+
+</div>
+
+
+
+
+<button>
+
+Continuer vers le paiement
+
+</button>
+
+
+`;
+
+
+
+</script>
+
+
+
+
+</body>
+
+
+</html>
