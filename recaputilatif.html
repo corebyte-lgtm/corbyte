@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Récapitulatif Corbyte</title>
+
+
+<style>
+
+body{
+
+margin:0;
+
+background:#050505;
+
+color:white;
+
+font-family:Arial;
+
+text-align:center;
+
+}
+
+
+
+h1{
+
+color:#ff003c;
+
+margin-top:40px;
+
+}
+
+
+
+.box{
+
+width:650px;
+
+max-width:90%;
+
+margin:40px auto;
+
+background:#111;
+
+border:2px solid #ff003c;
+
+border-radius:20px;
+
+padding:30px;
+
+}
+
+
+
+img{
+
+width:150px;
+
+border-radius:15px;
+
+}
+
+
+
+.prix{
+
+color:#ff003c;
+
+font-size:25px;
+
+font-weight:bold;
+
+}
+
+
+
+button{
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+padding:15px 35px;
+
+border-radius:10px;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+
+
+hr{
+
+border:1px solid #333;
+
+margin:25px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<h1>
+
+Récapitulatif de votre commande
+
+</h1>
+
+
+
+<div class="box" id="contenu">
+
+</div>
+
+
+
+
+
+<script>
+
+
+let client = JSON.parse(localStorage.getItem("client")) || {};
+
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+
+
+let total = 0;
+
+let html="";
+
+
+
+
+
+html += `
+
+
+<h2>
+
+Informations client
+
+</h2>
+
+
+<p>
+
+Nom : ${client.nom || ""}<br>
+
+Adresse : ${client.adresse || ""}<br>
+
+Code postal : ${client.code || ""}<br>
+
+Email : ${client.email || ""}<br>
+
+Téléphone : ${client.telephone || ""}
+
+</p>
+
+
+<hr>
+
+
+<h2>
+
+Commande
+
+</h2>
+
+
+`;
+
+
+
+
+
+
+panier.forEach(pc=>{
+
+
+let sousTotal = pc.prix * pc.quantite;
+
+
+total += sousTotal;
+
+
+
+html += `
+
+
+<img src="${pc.image}">
+
+
+<h3>
+
+${pc.nom}
+
+</h3>
+
+
+
+<p>
+
+Quantité : ${pc.quantite}
+
+</p>
+
+
+
+<p>
+
+Prix unitaire : ${pc.prix} €
+
+</p>
+
+
+
+<div class="prix">
+
+${sousTotal} €
+
+</div>
+
+
+<hr>
+
+
+`;
+
+
+
+});
+
+
+
+
+
+html += `
+
+
+<h2>
+
+Total à payer :
+
+</h2>
+
+
+<div class="prix">
+
+${total} €
+
+</div>
+
+
+
+<br>
+
+
+<a href="paiement.html">
+
+<button>
+
+Continuer vers le paiement
+
+</button>
+
+</a>
+
+
+`;
+
+
+
+
+
+document.getElementById("contenu").innerHTML=html;
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
